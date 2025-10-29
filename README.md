@@ -5,7 +5,7 @@
 </picture>
 
 <p align="center">
-Useful tools for developer and people working in IT. <a href="https://it-tools.tech">Try it!</a>
+Useful tools for developer and people working in IT. <a href="https://it-tools.30tools.com">Try it!</a>
 </p>
 
 
