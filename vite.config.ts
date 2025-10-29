@@ -56,15 +56,34 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       strategies: 'generateSW',
+      workbox: {
+        globPatterns: ['**/*.{js,css,html,ico,png,svg,json,vue,txt,woff2}'],
+        runtimeCaching: [
+          {
+            urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,
+            handler: 'CacheFirst',
+            options: {
+              cacheName: 'google-fonts-cache',
+              expiration: {
+                maxEntries: 10,
+                maxAgeSeconds: 60 * 60 * 24 * 365 // 1 year
+              }
+            }
+          }
+        ]
+      },
       manifest: {
-        name: 'IT Tools',
-        description: 'Aggregated set of useful tools for developers.',
+        name: 'IT Tools - Free Developer Tools',
+        short_name: 'IT Tools',
+        description: 'Free collection of 100+ online developer tools: JSON formatter, Base64 converter, UUID generator, regex tester, encryption tools, and more.',
         display: 'standalone',
-        lang: 'fr-FR',
+        lang: 'en-US',
         start_url: `${baseUrl}?utm_source=pwa&utm_medium=pwa`,
         orientation: 'any',
         theme_color: '#18a058',
         background_color: '#f1f5f9',
+        categories: ['productivity', 'developer', 'utilities'],
+        keywords: ['developer tools', 'JSON formatter', 'Base64 converter', 'UUID generator', 'encryption', 'regex tester'],
         icons: [
           {
             src: '/favicon-16x16.png',
